@@ -23,7 +23,7 @@ const IconContainer = styled('span', {
 	padding: '$4',
 	borderRadius: '$full',
 
-	inlineFlex: 'row',
+	displayInlineFlex: 'row',
 	alignItems: 'center',
 
 	backgroundColor: 'rgba(63, 103, 186, 0.15)'

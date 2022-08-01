@@ -4,12 +4,12 @@ const FilterContainer = styled('ul', {
 	width: '100%',
 	maxWidth: '$93',
 
-	flex: 'column',
+	displayFlex: 'column',
 	gap: '$40'
 });
 
 const FilterItem = styled('li', {
-	flex: 'row',
+	displayFlex: 'row',
 	alignItems: 'center',
 	gap: '$20',
 
@@ -21,12 +21,12 @@ const FilterItem = styled('li', {
 			width: '$24',
 			height: '$24',
 
-			flex: 'row',
+			displayFlex: 'row',
 			alignItems: 'center',
 			justifyContent: 'center',
 
 			svg: {
-				width: '100%'
+				// width: '100%'
 			}
 		},
 

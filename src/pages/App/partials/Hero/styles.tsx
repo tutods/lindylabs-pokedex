@@ -28,7 +28,7 @@ const Section = styled('section', {
 const HeroContainer = styled(Container, {
 	position: 'relative',
 
-	display: 'flex',
+	displayFlex: 'row',
 	flexDirection: 'column',
 	alignItems: 'center',
 	justifyContent: 'center',
@@ -52,7 +52,7 @@ const StyledExploreBtn = styled('a', {
 	bottom: 0,
 	left: 0,
 
-	flex: 'column',
+	displayFlex: 'column',
 	gap: '$30',
 	alignItems: 'center',
 	justifyContent: 'center',
@@ -70,7 +70,7 @@ const StyledExploreBtn = styled('a', {
 		'&:nth-of-type(2)': {
 			size: '$40',
 
-			inlineFlex: 'row',
+			display: 'inline-flex',
 			alignItems: 'center',
 			justifyContent: 'center',
 

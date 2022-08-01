@@ -27,11 +27,11 @@ const utils = {
 		width: value,
 		height: value
 	}),
-	inlineFlex: (direction: 'row' | 'column') => ({
+	displayInlineFlex: (direction: 'row' | 'column') => ({
 		display: 'inline-flex',
 		flexDirection: direction
 	}),
-	flex: (direction: 'row' | 'column') => ({
+	displayFlex: (direction: 'row' | 'column') => ({
 		display: 'flex',
 		flexDirection: direction
 	})

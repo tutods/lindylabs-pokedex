@@ -4,7 +4,7 @@ const SearchSection = styled('section', {
 	py: '$92',
 
 	'&>div': {
-		flex: 'row',
+		displayFlex: 'row',
 		alignItems: 'center',
 		justifyContent: 'space-between',
 
@@ -19,7 +19,7 @@ const SearchGroup = styled('form', {
 	maxWidth: '$400',
 	width: '100%',
 
-	flex: 'row',
+	displayFlex: 'row',
 	alignItems: 'center',
 	gap: '$16',
 

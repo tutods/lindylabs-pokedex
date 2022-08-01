@@ -17,8 +17,6 @@ const HeroSection = () => {
 					</span>
 				</StyledExploreBtn>
 			</HeroContainer>
-			re
-			{/* <img src={redPokeball} alt={'Pokeball'} /> */}
 		</Section>
 	);
 };

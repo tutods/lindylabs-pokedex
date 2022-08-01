@@ -5,7 +5,7 @@ const StyledBadge = styled('span', {
 
 	minWidth: '$78',
 
-	flex: 'row',
+	displayFlex: 'row',
 	alignItems: 'center',
 	justifyContent: 'center',
 
