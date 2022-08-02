@@ -1,4 +1,5 @@
 import { styled } from 'styles/stitches';
+import { Container } from 'components/ui/Container';
 
 const SearchSection = styled('section', {
 	py: '$92',
@@ -71,4 +72,16 @@ const PokemonsSection = styled('section', {
 	py: '$72'
 });
 
-export { SearchSection, SearchGroup, PokemonsSection };
+const CustomContainer = styled(Container, {
+	position: 'relative',
+
+	displayGrid: '$sizes$100 1fr',
+	gap: '$202'
+});
+
+const PokemonListContainer = styled('div', {
+	displayGrid: 'repeat(3, 1fr)',
+	gap: '$16'
+});
+
+export { SearchSection, SearchGroup, PokemonsSection, CustomContainer, PokemonListContainer };

@@ -1,9 +1,6 @@
 import { styled } from 'styles/stitches';
 
 const FilterContainer = styled('ul', {
-	width: '100%',
-	maxWidth: '$93',
-
 	displayFlex: 'column',
 	gap: '$40'
 });

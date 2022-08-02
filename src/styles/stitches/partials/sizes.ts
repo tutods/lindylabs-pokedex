@@ -1,10 +1,14 @@
+import { calculateRem } from 'shared/utils/calculateRem';
+
 const sizes = {
+	1: calculateRem(1),
 	2: '0.125rem',
 	4: '0.25rem',
 	6: '0.375rem',
 	8: '0.5rem',
 	10: '0.625rem',
 	12: '0.75rem',
+	13: calculateRem(13),
 	14: '0.875rem',
 	15: '.9375rem',
 	16: '1rem',
@@ -13,6 +17,7 @@ const sizes = {
 	20: '1.25rem',
 	24: '1.50rem',
 	26: '1.625rem',
+	28: calculateRem(28),
 	32: '2rem',
 	36: '2.25rem',
 	37: '2.3125rem',
@@ -32,6 +37,10 @@ const sizes = {
 	100: '6.25rem',
 	130: '8.125rem',
 	160: '10rem',
+	165: calculateRem(165),
+	170: calculateRem(170),
+	180: calculateRem(180),
+	200: calculateRem(200),
 	220: '13.75rem',
 	226: '14.125rem',
 	265: '16.5625rem',

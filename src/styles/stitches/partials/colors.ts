@@ -30,6 +30,7 @@ const colors = {
 	white: '#FFFFFF',
 	dark: '#2F3133',
 	gray: '#ACB9C1',
+	grayDarkest: '#7A7D80',
 	shape: '#FFF',
 	background: '#EFF3F6',
 	text: '#1F2729',

@@ -6,7 +6,8 @@ const globalStyles = globalCss({
 	],
 
 	html: {
-		scrollBehavior: 'smooth'
+		scrollBehavior: 'smooth',
+		fontSize: '16px'
 	},
 
 	'*': {

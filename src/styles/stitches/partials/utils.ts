@@ -34,6 +34,10 @@ const utils = {
 	displayFlex: (direction: 'row' | 'column') => ({
 		display: 'flex',
 		flexDirection: direction
+	}),
+	displayGrid: (columns: PropertyValue<'gridTemplateColumns'>) => ({
+		display: 'grid',
+		gridTemplateColumns: columns
 	})
 };
 

@@ -1,11 +1,14 @@
+import { calculateRem } from 'shared/utils/calculateRem';
+
 const radii = {
 	full: '100%',
-	2: '.125rem',
-	4: '.25rem',
-	8: '.5rem',
+	2: calculateRem(2),
+	4: calculateRem(4),
+	8: calculateRem(8),
+	12: calculateRem(12),
 	16: '1rem',
-	100: '6.25rem',
-	244: '15.25rem'
+	100: calculateRem(100),
+	244: calculateRem(244)
 };
 
 export { radii };
