@@ -8,10 +8,8 @@ import { RecoilRoot } from 'recoil';
 globalStyles();
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-	<React.StrictMode>
-		<RecoilRoot>
-			<Sprite />
-			<App />
-		</RecoilRoot>
-	</React.StrictMode>
+	<RecoilRoot>
+		<Sprite />
+		<App />
+	</RecoilRoot>
 );

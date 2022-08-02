@@ -6,4 +6,9 @@ const pokemonListAtom = atom<Pokemon[]>({
 	default: []
 });
 
-export { pokemonListAtom };
+const totalOfPokemonsAtom = atom<number>({
+	key: 'totalOfPokemons',
+	default: 0
+});
+
+export { pokemonListAtom, totalOfPokemonsAtom };

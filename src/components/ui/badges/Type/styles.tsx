@@ -22,7 +22,7 @@ const StyledBadge = styled('span', {
 
 			borderRadius: '$4',
 
-			opacity: '0.1',
+			opacity: '0.2',
 
 			zIndex: 0
 		},

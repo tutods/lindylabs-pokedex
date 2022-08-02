@@ -36,7 +36,7 @@ const globalStyles = globalCss({
 		border: 0,
 
 		backgroundColor: 'transparent',
-
+		boxShadow: 'none',
 		cursor: 'pointer',
 
 		'&:disabled': {

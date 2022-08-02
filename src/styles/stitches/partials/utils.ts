@@ -23,6 +23,12 @@ const utils = {
 	mt: (value: PropertyValue<'marginTop'>) => ({
 		marginTop: value
 	}),
+	pt: (value: PropertyValue<'paddingTop'>) => ({
+		paddingTop: value
+	}),
+	pb: (value: PropertyValue<'paddingBottom'>) => ({
+		paddingBottom: value
+	}),
 	size: (value: PropertyValue<'width'>) => ({
 		width: value,
 		height: value

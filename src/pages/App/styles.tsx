@@ -80,6 +80,7 @@ const CustomContainer = styled(Container, {
 });
 
 const ContentContainer = styled('div', {
+	width: '100%',
 	displayFlex: 'column'
 });
 
@@ -88,11 +89,20 @@ const PokemonListContainer = styled('div', {
 	gap: '$16'
 });
 
+const GenericBottomContainer = styled('div', {
+	displayFlex: 'row',
+	alignItems: 'center',
+	justifyContent: 'center',
+
+	py: '$32'
+});
+
 export {
 	SearchSection,
 	SearchGroup,
 	PokemonsSection,
 	CustomContainer,
 	ContentContainer,
-	PokemonListContainer
+	PokemonListContainer,
+	GenericBottomContainer
 };

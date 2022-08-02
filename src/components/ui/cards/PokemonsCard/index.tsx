@@ -5,14 +5,14 @@ import { PokemonTypeIcon } from 'components/icons/PokemonType';
 
 type Props = {
 	pokemon: Pokemon;
-	// onClick: () => void
+	onClick: () => void;
 };
 
-const PokemonCard = ({ pokemon }: Props) => {
+const PokemonCard = ({ pokemon, onClick }: Props) => {
 	const type = pokemon.types[0].type.name;
 
 	return (
-		<CardShape type={type}>
+		<CardShape type={type} onClick={onClick}>
 			<ImageContainer type={type}>
 				<div />
 				<img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />

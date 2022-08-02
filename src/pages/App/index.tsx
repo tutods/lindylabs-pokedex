@@ -1,58 +1,68 @@
 import Icon from 'components/icons/Icon';
 import { Container } from 'components/ui/Container';
-import { useRecoilState } from 'recoil';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { currentFilterAtom } from 'shared/store/atoms/filter.atom';
 import { PokemonTypeFilter } from './partials/Filter';
 import { HeroSection } from './partials/Hero';
 import {
 	ContentContainer,
 	CustomContainer,
+	GenericBottomContainer,
 	PokemonListContainer,
 	PokemonsSection,
 	SearchGroup,
 	SearchSection
 } from './styles';
-import { pokemonListAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
+import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import { useEffect, useState } from 'react';
 import { getPokemonsService } from 'shared/services/api/getPokemons.service';
 import { PokemonCard } from 'components/ui/cards/PokemonsCard';
+import { haveNextAtom, offsetAtom } from 'shared/store/atoms/pagination.atom';
+import { Loading } from 'components/ui/Loading';
+import { PrimaryButton } from 'components/ui/button/PrimaryButton';
+import { PokemonCounter } from 'pages/App/partials/Counter';
+import { PokemonModal } from 'components/modal/PokemonModal';
+import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
 
 const LIMIT_SIZE = 9;
 
 const App = () => {
-	const [isLoading, setIsLoading] = useState(false);
+	const setTotalOfPokemons = useSetRecoilState(totalOfPokemonsAtom);
 
+	const setPokemonModal = useSetRecoilState(pokemonModalAtom);
+	const [isLoading, setIsLoading] = useState(false);
 	const [currentFilter, setCurrentFilter] = useRecoilState(currentFilterAtom);
 
 	const [pokemons, setPokemons] = useRecoilState(pokemonListAtom);
 
-	const [offset, setOffset] = useState(0);
-
-	// // States to use on Infinite Scrolling
-	// const [pagination, setPagination] = useState<{
-	// 	offset: number;
-	// 	previousOffset?: number;
-	// 	hasMore: boolean;
-	// }>({
-	// 	offset: 0,
-	// 	previousOffset: 0,
-	// 	hasMore: true
-	// });
+	const [offset, setOffset] = useRecoilState(offsetAtom);
+	const [haveNext, setHaveNext] = useRecoilState(haveNextAtom);
 
 	const getData = async (offsetValue: number) => {
 		setIsLoading(true);
-		const { results, next, previous } = await getPokemonsService(offsetValue);
-		console.log('ENTROU');
+		const { results, count, next, previous } = await getPokemonsService(offsetValue);
+		setTotalOfPokemons(count);
 
 		if (results) {
 			setPokemons((prevState) => {
 				return offset === 0 ? results : [...prevState, ...results];
 			});
 		}
+
+		setHaveNext(!!next);
+
 		setIsLoading(false);
 	};
+
 	useEffect(() => {
 		getData(0);
+
+		return () => {
+			setPokemons([]);
+			setOffset(0);
+			setIsLoading(false);
+			setHaveNext(false);
+		};
 	}, []);
 
 	useEffect(() => {
@@ -68,6 +78,7 @@ const App = () => {
 	return (
 		<>
 			<HeroSection />
+			<PokemonModal />
 
 			<SearchSection>
 				<Container>
@@ -93,25 +104,43 @@ const App = () => {
 						currentFilter={currentFilter}
 						callback={handleFilterChange}
 					/>
-					{/*<InfiniteScroll*/}
-					{/*	style={{ overflow: 'hidden' }}*/}
-					{/*	dataLength={pokemons.length}*/}
-					{/*	next={handleGetData}*/}
-					{/*	hasMore={pagination.hasMore}*/}
-					{/*	loader={<h2>Loading...</h2>}*/}
-					{/*>*/}
 					<ContentContainer>
+						<PokemonCounter
+							css={{
+								paddingBottom: '$60'
+							}}
+						/>
+
 						<PokemonListContainer>
 							{pokemons.map((pokemon) => (
 								<PokemonCard
 									key={`${pokemon.id}-${pokemon.name.replace(' ', '-')}`}
 									pokemon={pokemon}
+									onClick={() =>
+										setPokemonModal((prev) => ({
+											isOpen: true,
+											pokemon: pokemon
+										}))
+									}
 								/>
 							))}
 						</PokemonListContainer>
-						<button onClick={() => setOffset((prev) => prev + LIMIT_SIZE)}>
-							Load More
-						</button>
+
+						{isLoading && (
+							<GenericBottomContainer>
+								<Loading size={16} color={'blue'} />
+							</GenericBottomContainer>
+						)}
+
+						{(haveNext || isLoading) && (
+							<GenericBottomContainer>
+								<PrimaryButton
+									onClick={() => setOffset((prev) => prev + LIMIT_SIZE)}
+								>
+									Load more Pokémons
+								</PrimaryButton>
+							</GenericBottomContainer>
+						)}
 					</ContentContainer>
 				</CustomContainer>
 			</PokemonsSection>
