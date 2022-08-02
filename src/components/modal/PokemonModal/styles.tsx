@@ -274,30 +274,46 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 		'&:nth-of-type(2)': {
 			display: 'grid',
 			gridTemplateColumns: 'repeat(2, 1fr)',
-			gap: '$24',
 
 			div: {
-				displayFlex: 'column',
-				alignItems: 'center',
-				gap: '$4',
+				'&:nth-of-type(1)': {
+					position: 'relative',
 
-				span: {
-					'&:nth-of-type(1)': {
-						displayFlex: 'row',
-						alignItems: 'center',
-						gap: '$8',
+					displayFlex: 'column',
+					alignItems: 'center',
+					gap: '$4',
 
-						fontSize: '$14',
+					span: {
+						'&:nth-of-type(1)': {
+							displayFlex: 'row',
+							alignItems: 'center',
+							gap: '$8',
 
-						svg: {
-							width: '$16',
-							height: '$16'
+							fontSize: '$14',
+
+							svg: {
+								width: '$16',
+								height: '$16'
+							}
+						},
+
+						'&:nth-of-type(2)': {
+							fontSize: '$12',
+							color: '$gray'
 						}
 					},
 
-					'&:nth-of-type(2)': {
-						fontSize: '$12',
-						color: '$gray'
+					'&:not(&:nth-of-type(2))::after': {
+						content: '',
+						position: 'absolute',
+						right: 0,
+						top: 0,
+
+						height: '100%',
+
+						px: '$4',
+						borderRadius: '$2',
+						borderRight: '1px solid $colors$gray'
 					}
 				}
 			}

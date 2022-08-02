@@ -79,6 +79,10 @@ const PokemonModal = () => {
 								<span>Height</span>
 							</div>
 						</div>
+
+						<h4>Base Stats</h4>
+
+						<div></div>
 					</StyledModalDescription>
 				</StyledModalContent>
 			</Dialog.Portal>
