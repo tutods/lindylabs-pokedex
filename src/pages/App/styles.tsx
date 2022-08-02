@@ -79,9 +79,20 @@ const CustomContainer = styled(Container, {
 	gap: '$202'
 });
 
+const ContentContainer = styled('div', {
+	displayFlex: 'column'
+});
+
 const PokemonListContainer = styled('div', {
 	displayGrid: 'repeat(3, 1fr)',
 	gap: '$16'
 });
 
-export { SearchSection, SearchGroup, PokemonsSection, CustomContainer, PokemonListContainer };
+export {
+	SearchSection,
+	SearchGroup,
+	PokemonsSection,
+	CustomContainer,
+	ContentContainer,
+	PokemonListContainer
+};

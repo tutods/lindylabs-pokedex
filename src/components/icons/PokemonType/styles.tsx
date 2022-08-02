@@ -29,7 +29,8 @@ const IconContainer = styled('span', {
 				backgroundColor: '$dragon'
 			},
 			electric: {
-				backgroundColor: '$electric'
+				backgroundColor: '$electric',
+				color: '$dark'
 			},
 			fairy: {
 				backgroundColor: '$fairy'

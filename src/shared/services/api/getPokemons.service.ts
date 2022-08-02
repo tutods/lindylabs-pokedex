@@ -1,7 +1,7 @@
 import { api } from 'shared/services/api';
 import { OriginalPokemonsResponse, Pokemon, PokemonsResponse } from 'shared/@types/Pokemons';
 
-const getPokemonsService = async (offset: number = 0): Promise<PokemonsResponse> => {
+const getPokemonsService = async (offset: number): Promise<PokemonsResponse> => {
 	try {
 		const { data } = await api.get<OriginalPokemonsResponse>('pokemon', {
 			params: {
@@ -12,9 +12,7 @@ const getPokemonsService = async (offset: number = 0): Promise<PokemonsResponse>
 
 		const pokemons = data.results.map(async (pokemon) => {
 			try {
-				const { data: pokemonData } = await api.get<Pokemon>(
-					(pokemon as { name: string; url: string }).url
-				);
+				const { data: pokemonData } = await api.get<Pokemon>(pokemon.url);
 
 				return pokemonData;
 			} catch (error: any) {

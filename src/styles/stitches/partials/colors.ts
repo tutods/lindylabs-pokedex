@@ -10,7 +10,7 @@ const pokemonTypeColors = {
 	fairy: '#E296E1',
 	psychic: '#EB8B85',
 	fighting: '#C44D61',
-	rock: '#8BCEC1',
+	rock: '#A38C21',
 	ghost: '#616EB7',
 	grass: '#73B861',
 	steel: '#6594A1',
