@@ -16,7 +16,7 @@ import {
 import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import { FormEvent, useEffect, useRef, useState } from 'react';
 import { getPokemonsService } from 'shared/services/api/pokemons/getPokemons.service';
-import { PokemonCard } from 'components/ui/cards/PokemonsCard';
+import { PokemonCard } from 'components/ui/cards/PokemonCard';
 import { haveNextAtom, offsetAtom } from 'shared/store/atoms/pagination.atom';
 import { Loading } from 'components/ui/Loading';
 import { PrimaryButton } from 'components/ui/button/PrimaryButton';

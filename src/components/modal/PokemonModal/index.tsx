@@ -24,31 +24,32 @@ const PokemonModal = () => {
 			isOpen
 		}));
 
+	const pokemonImage =
+		pokemon?.sprites.other.dream_world.front_default ||
+		pokemon?.sprites.other.home.front_default ||
+		pokemon?.sprites.other['official-artwork'].front_default;
+
 	return (
 		<Dialog.Root open={isOpen} onOpenChange={handleOpenModal}>
 			<Dialog.Portal>
 				<StyledModalOverlay />
 				<StyledModalContent type={pokemon?.types[0].type.name}>
 					<StyledModalTitle>
-						<div>
+						<span>
 							<Dialog.Close asChild>
-								<Icon name="arrow-left" />
+								<button>
+									<Icon name="arrow-left" />
+								</button>
 							</Dialog.Close>
 							<h3>{pokemon?.name}</h3>
-						</div>
+						</span>
 						<span>#{String(pokemon?.id).padStart(3, '0')}</span>
 					</StyledModalTitle>
 
 					<StyledTopModal>
 						<StyledPokeball name={'pokeball'} css={{ size: '$208' }} />
 						<StyledPokemonImage>
-							<img
-								src={
-									pokemon?.sprites.other.dream_world.front_default ||
-									pokemon?.sprites.other.home.front_default
-								}
-								alt={pokemon?.name}
-							/>
+							<img src={pokemonImage} alt={pokemon?.name} />
 						</StyledPokemonImage>
 					</StyledTopModal>
 

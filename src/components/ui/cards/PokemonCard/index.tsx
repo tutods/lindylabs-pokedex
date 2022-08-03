@@ -1,7 +1,8 @@
 import { Pokemon } from 'shared/@types/Pokemon';
-import { CardShape, ImageContainer, InfoContainer } from 'components/ui/cards/PokemonsCard/styles';
+import { CardShape, ImageContainer, InfoContainer } from 'components/ui/cards/PokemonCard/styles';
 import { capitalizeString } from 'shared/utils/capitalizeString';
 import { PokemonTypeIcon } from 'components/icons/PokemonType';
+import Icon from 'components/icons/Icon';
 
 type Props = {
 	pokemon: Pokemon;
@@ -11,16 +12,19 @@ type Props = {
 const PokemonCard = ({ pokemon, onClick }: Props) => {
 	const type = pokemon.types[0].type.name;
 
+	const pokemonImage =
+		pokemon.sprites.other.dream_world.front_default ||
+		pokemon.sprites.other.home.front_default ||
+		pokemon.sprites.other['official-artwork'].front_default;
+
 	return (
 		<CardShape type={type} onClick={onClick}>
 			<ImageContainer type={type}>
 				<div />
 				<img
-					src={
-						pokemon.sprites.other.dream_world.front_default ||
-						pokemon.sprites.other.home.front_default
-					}
+					src={pokemonImage}
 					alt={pokemon.name}
+					onError={() => <Icon name={'pokeball'} />}
 				/>
 			</ImageContainer>
 

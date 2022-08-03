@@ -208,29 +208,40 @@ const StyledModalTitle = styled(DialogPrimitive.Title, {
 
 	color: '$white',
 
-	div: {
-		flex: '1 1 auto',
+	span: {
+		'&:nth-of-type(1)': {
+			flex: '1 1 auto',
 
-		displayFlex: 'row',
-		alignItems: 'center',
-		gap: '$16',
+			displayFlex: 'row',
+			alignItems: 'center',
+			gap: '$16',
 
-		h3: {
-			fontSize: '$24',
-			fontWeight: '$bold',
-			textTransform: 'capitalize'
+			h3: {
+				fontSize: '$24',
+				fontWeight: '$bold',
+				textTransform: 'capitalize'
+			},
+
+			button: {
+				border: '0',
+
+				color: '$white',
+				cursor: 'pointer',
+
+				'&:focus': {
+					outline: 'none'
+				},
+
+				svg: {
+					width: '$24'
+				}
+			}
 		},
 
-		svg: {
-			width: '$24',
-
-			cursor: 'pointer'
+		'&:nth-of-type(2)': {
+			fontSize: '$12',
+			fontWeight: '$medium'
 		}
-	},
-
-	span: {
-		fontSize: '$12',
-		fontWeight: '$medium'
 	}
 });
 
