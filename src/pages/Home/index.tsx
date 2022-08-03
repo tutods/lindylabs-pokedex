@@ -147,6 +147,7 @@ const Home = () => {
 						{currentFilter === 'all' && (haveNext || !isLoading) && (
 							<GenericBottomContainer>
 								<Button
+									disabled={isLoading}
 									variant={'primary'}
 									onClick={() => setOffset((prev) => prev + LIMIT_SIZE)}
 								>

@@ -17,6 +17,10 @@ const Button = styled('button', {
 				backgroundColor: 'rgba(63, 93, 179, 0.1)',
 				color: '$blue',
 
+				'&:disabled': {
+					opacity: '0.5'
+				},
+
 				'&:hover': {
 					backgroundColor: '$blue',
 					color: '$white'
