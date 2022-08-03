@@ -4,7 +4,7 @@ import { FilterContainer, FilterItem } from './style';
 import { CSSProps } from 'shared/@types/Stitches';
 
 type Props = CSSProps & {
-	callback: (filter: string) => void;
+	callback: (filter: 'all' | PokemonTypeEnum) => void;
 	currentFilter: string;
 };
 

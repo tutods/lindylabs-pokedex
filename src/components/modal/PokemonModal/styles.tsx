@@ -44,7 +44,7 @@ const StyledModalContent = styled(DialogPrimitive.Content, {
 	transform: 'translate(-50%, -50%)',
 	zIndex: 3,
 
-	h4: {
+	'h4,h5': {
 		textAlign: 'center'
 	},
 
@@ -53,126 +53,126 @@ const StyledModalContent = styled(DialogPrimitive.Content, {
 			bug: {
 				backgroundColor: '$bug',
 
-				h4: {
+				'h4,h5': {
 					color: '$bug'
 				}
 			},
 			dark: {
 				backgroundColor: '$dark',
 
-				h4: {
+				'h4,h5': {
 					color: '$dark'
 				}
 			},
 			dragon: {
 				backgroundColor: '$dragon',
 
-				h4: {
+				'h4,h5': {
 					color: '$dragon'
 				}
 			},
 			electric: {
 				backgroundColor: '$electric',
 
-				h4: {
+				'h4,h5': {
 					color: '$electric'
 				}
 			},
 			fairy: {
 				backgroundColor: '$fairy',
 
-				h4: {
+				'h4,h5': {
 					color: '$fairy'
 				}
 			},
 			fighting: {
 				backgroundColor: '$fighting',
 
-				h4: {
+				'h4,h5': {
 					color: '$fighting'
 				}
 			},
 			fire: {
 				backgroundColor: '$fire',
 
-				h4: {
+				'h4,h5': {
 					color: '$fire'
 				}
 			},
 			flying: {
 				backgroundColor: '$flying',
 
-				h4: {
+				'h4,h5': {
 					color: '$flying'
 				}
 			},
 			ghost: {
 				backgroundColor: '$ghost',
 
-				h4: {
+				'h4,h5': {
 					color: '$ghost'
 				}
 			},
 			grass: {
 				backgroundColor: '$grass',
 
-				h4: {
+				'h4,h5': {
 					color: '$grass'
 				}
 			},
 			ground: {
 				backgroundColor: '$ground',
 
-				h4: {
+				'h4,h5': {
 					color: '$ground'
 				}
 			},
 			ice: {
 				backgroundColor: '$ice',
 
-				h4: {
+				'h4,h5': {
 					color: '$ice'
 				}
 			},
 			normal: {
 				backgroundColor: '$normal',
 
-				h4: {
+				'h4,h5': {
 					color: '$normal'
 				}
 			},
 			poison: {
 				backgroundColor: '$poison',
 
-				h4: {
+				'h4,h5': {
 					color: '$poison'
 				}
 			},
 			psychic: {
 				backgroundColor: '$psychic',
 
-				h4: {
+				'h4,h5': {
 					color: '$psychic'
 				}
 			},
 			rock: {
 				backgroundColor: '$rock',
 
-				h4: {
+				'h4,h5': {
 					color: '$rock'
 				}
 			},
 			steel: {
 				backgroundColor: '$steel',
 
-				h4: {
+				'h4,h5': {
 					color: '$steel'
 				}
 			},
 			water: {
 				backgroundColor: '$water',
 
-				h4: {
+				'h4,h5': {
 					color: '$water'
 				}
 			}
@@ -217,7 +217,8 @@ const StyledModalTitle = styled(DialogPrimitive.Title, {
 
 		h3: {
 			fontSize: '$24',
-			fontWeight: '$bold'
+			fontWeight: '$bold',
+			textTransform: 'capitalize'
 		},
 
 		svg: {
@@ -263,7 +264,7 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 	backgroundColor: '$shape',
 	color: '$text',
 
-	div: {
+	'&>div': {
 		'&:nth-of-type(1)': {
 			displayFlex: 'row',
 			gap: '$16',
@@ -276,48 +277,48 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 			gridTemplateColumns: 'repeat(2, 1fr)',
 
 			div: {
-				'&:nth-of-type(1)': {
-					position: 'relative',
+				position: 'relative',
 
-					displayFlex: 'column',
-					alignItems: 'center',
-					gap: '$4',
+				displayFlex: 'column',
+				alignItems: 'center',
+				gap: '$4',
 
-					span: {
-						'&:nth-of-type(1)': {
-							displayFlex: 'row',
-							alignItems: 'center',
-							gap: '$8',
+				span: {
+					'&:nth-of-type(1)': {
+						displayFlex: 'row',
+						alignItems: 'center',
+						gap: '$8',
 
-							fontSize: '$14',
+						fontSize: '$14',
 
-							svg: {
-								width: '$16',
-								height: '$16'
-							}
-						},
-
-						'&:nth-of-type(2)': {
-							fontSize: '$12',
-							color: '$gray'
+						svg: {
+							width: '$16',
+							height: '$16'
 						}
 					},
 
-					'&:not(&:nth-of-type(2))::after': {
-						content: '',
-						position: 'absolute',
-						right: 0,
-						top: 0,
-
-						height: '100%',
-
-						px: '$4',
-						borderRadius: '$2',
-						borderRight: '1px solid $colors$gray'
+					'&:nth-of-type(2)': {
+						fontSize: '$12',
+						color: '$gray'
 					}
+				},
+
+				'&:not(&:nth-of-type(2))::after': {
+					content: '',
+					position: 'absolute',
+					right: 0,
+					top: 0,
+
+					height: '100%',
+
+					px: '$4',
+					borderRadius: '$2',
+					borderRight: '1px solid $colors$gray'
 				}
 			}
-		}
+		},
+
+		'&:nth-of-type(3)': {}
 	}
 });
 

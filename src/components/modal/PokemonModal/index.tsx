@@ -16,9 +16,7 @@ import { PokemonTypeBadge } from 'components/ui/badges/Type';
 const PokemonModal = () => {
 	const [pokemonModal, setPokemonModal] = useRecoilState(pokemonModalAtom);
 
-	// if (!pokemonModal.pokemon) {
-	// 	setPokemonModal((prev) => ({ ...prev, isOpen: false }));
-	// }
+	const { pokemon, isOpen } = pokemonModal;
 
 	const handleOpenModal = (isOpen: boolean) =>
 		setPokemonModal((prevState) => ({
@@ -27,33 +25,36 @@ const PokemonModal = () => {
 		}));
 
 	return (
-		<Dialog.Root open={pokemonModal.isOpen} onOpenChange={handleOpenModal}>
+		<Dialog.Root open={isOpen} onOpenChange={handleOpenModal}>
 			<Dialog.Portal>
 				<StyledModalOverlay />
-				<StyledModalContent type={pokemonModal.pokemon?.types[0].type.name}>
+				<StyledModalContent type={pokemon?.types[0].type.name}>
 					<StyledModalTitle>
 						<div>
 							<Dialog.Close asChild>
 								<Icon name="arrow-left" />
 							</Dialog.Close>
-							<h3>{pokemonModal.pokemon?.name}</h3>
+							<h3>{pokemon?.name}</h3>
 						</div>
-						<span>#001</span>
+						<span>#{String(pokemon?.id).padStart(3, '0')}</span>
 					</StyledModalTitle>
 
 					<StyledTopModal>
 						<StyledPokeball name={'pokeball'} css={{ size: '$208' }} />
 						<StyledPokemonImage>
 							<img
-								src={pokemonModal.pokemon?.sprites.other.dream_world.front_default}
-								alt={pokemonModal.pokemon?.name}
+								src={
+									pokemon?.sprites.other.dream_world.front_default ||
+									pokemon?.sprites.other.home.front_default
+								}
+								alt={pokemon?.name}
 							/>
 						</StyledPokemonImage>
 					</StyledTopModal>
 
 					<StyledModalDescription>
 						<div>
-							{pokemonModal.pokemon?.types.map((pokemonType) => (
+							{pokemon?.types.map((pokemonType) => (
 								<PokemonTypeBadge
 									type={pokemonType.type.name}
 									key={pokemonType.type.name}
@@ -67,22 +68,18 @@ const PokemonModal = () => {
 							<div>
 								<span>
 									<Icon name={'weight'} />
-									{pokemonModal.pokemon?.weight} kg
+									{pokemon?.weight} kg
 								</span>
 								<span>Weight</span>
 							</div>
 							<div>
 								<span>
 									<Icon name={'rule'} />
-									{pokemonModal.pokemon?.height} m
+									{pokemon?.height} m
 								</span>
 								<span>Height</span>
 							</div>
 						</div>
-
-						<h4>Base Stats</h4>
-
-						<div></div>
 					</StyledModalDescription>
 				</StyledModalContent>
 			</Dialog.Portal>

@@ -1,5 +1,6 @@
-import { api } from 'shared/services/api';
-import { OriginalPokemonsResponse, Pokemon, PokemonsResponse } from 'shared/@types/Pokemons';
+import { api } from 'shared/services/api/index';
+import { Pokemon } from 'shared/@types/Pokemon';
+import { OriginalPokemonsResponse, PokemonsResponse } from 'shared/@types/responses/GetPokemons';
 
 const getPokemonsService = async (offset: number): Promise<PokemonsResponse> => {
 	try {

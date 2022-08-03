@@ -1,4 +1,4 @@
-import { Pokemon } from 'shared/@types/Pokemons';
+import { Pokemon } from 'shared/@types/Pokemon';
 import { CardShape, ImageContainer, InfoContainer } from 'components/ui/cards/PokemonsCard/styles';
 import { capitalizeString } from 'shared/utils/capitalizeString';
 import { PokemonTypeIcon } from 'components/icons/PokemonType';
@@ -15,7 +15,13 @@ const PokemonCard = ({ pokemon, onClick }: Props) => {
 		<CardShape type={type} onClick={onClick}>
 			<ImageContainer type={type}>
 				<div />
-				<img src={pokemon.sprites.other.dream_world.front_default} alt={pokemon.name} />
+				<img
+					src={
+						pokemon.sprites.other.dream_world.front_default ||
+						pokemon.sprites.other.home.front_default
+					}
+					alt={pokemon.name}
+				/>
 			</ImageContainer>
 
 			<InfoContainer>

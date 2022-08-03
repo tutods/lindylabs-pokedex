@@ -1,4 +1,4 @@
-import { Pokemon } from 'shared/@types/Pokemons';
+import { Pokemon } from 'shared/@types/Pokemon';
 import { atom } from 'recoil';
 
 type PokemonModalAtom = {

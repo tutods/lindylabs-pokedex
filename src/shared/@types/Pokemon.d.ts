@@ -36,7 +36,19 @@ type Pokemon = {
 		};
 	}[];
 	height: number;
-	held_items: any[];
+	held_items: {
+		item: {
+			name: string;
+			url: string;
+		};
+		version_details: {
+			rarity: number;
+			version: {
+				name: string;
+				url: string;
+			};
+		}[];
+	}[];
 	id: number;
 	is_default: boolean;
 	location_area_encounters: string;
@@ -75,7 +87,7 @@ type Pokemon = {
 		front_shiny_female: string | null;
 		other: {
 			dream_world: {
-				front_default: string;
+				front_default: string | null;
 				front_female: string | null;
 			};
 			home: {
@@ -97,21 +109,4 @@ type Pokemon = {
 	weight: number;
 };
 
-type PokemonsResponse = {
-	count: number;
-	next: string;
-	previous: string | null;
-	results: Pokemon[];
-};
-
-type OriginalPokemonsResponse = {
-	count: number;
-	next: string;
-	previous: string | null;
-	results: {
-		name: string;
-		url: string;
-	}[];
-};
-
-export { PokemonType, PokemonStat, Pokemon, PokemonsResponse, OriginalPokemonsResponse };
+export { PokemonType, PokemonStat, Pokemon };

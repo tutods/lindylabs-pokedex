@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { Pokemon } from 'shared/@types/Pokemons';
+import { Pokemon } from 'shared/@types/Pokemon';
 
 const pokemonListAtom = atom<Pokemon[]>({
 	key: 'pokemonList',
