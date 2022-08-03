@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 
+import { Button } from 'components/Button';
+import { Container } from 'components/Container';
+import { Loading } from 'components/Loading';
 import { PokemonModal } from 'components/modal/PokemonModal';
 import { PokemonSearch } from 'components/Search';
-import { PrimaryButton } from 'components/ui/button/PrimaryButton';
-import { Container } from 'components/ui/Container';
-import { Loading } from 'components/ui/Loading';
 import { PokemonCounter } from 'pages/Home/partials/Counter';
 import { PokemonList } from 'pages/Home/partials/PokemonList';
 import { PokemonTypeEnum } from 'shared/enum/PokemonType.enum';
@@ -146,11 +146,12 @@ const Home = () => {
 
 						{currentFilter === 'all' && (haveNext || !isLoading) && (
 							<GenericBottomContainer>
-								<PrimaryButton
+								<Button
+									variant={'primary'}
 									onClick={() => setOffset((prev) => prev + LIMIT_SIZE)}
 								>
 									Load more Pokémons
-								</PrimaryButton>
+								</Button>
 							</GenericBottomContainer>
 						)}
 					</ContentContainer>

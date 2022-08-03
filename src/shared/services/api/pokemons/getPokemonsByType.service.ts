@@ -4,7 +4,7 @@ import {
 	PokemonsByTypeResponse
 } from 'shared/@types/responses/PokemonsByType';
 import { PokemonTypeEnum } from 'shared/enum/PokemonType.enum';
-import { api } from 'shared/services/api/index';
+import { api } from 'shared/services/api';
 
 const getPokemonsByType = async (type: PokemonTypeEnum): Promise<PokemonsByTypeResponse> => {
 	try {

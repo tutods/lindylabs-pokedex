@@ -1,5 +1,10 @@
 import { styled } from 'styles/stitches';
 
+/**
+ * I leave this card with <a /> tag, because if in the future you pretend to create
+ * a dedicated page to show Pokémon details,  you only need add href property
+ * (or change to Link if you use React Router DOM)
+ */
 const CardShape = styled('a', {
 	displayFlex: 'column',
 	justifyContent: 'center',

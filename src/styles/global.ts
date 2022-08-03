@@ -1,15 +1,18 @@
 import { globalCss } from 'styles/stitches';
 
 const globalStyles = globalCss({
+	// Import Poppins font to use
 	'@import': [
 		'url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap")'
 	],
 
+	// Set default font size (to use rem)
 	html: {
 		scrollBehavior: 'smooth',
 		fontSize: '16px'
 	},
 
+	// Reset CSS & Default Styles
 	'*': {
 		boxSizing: 'border-box',
 		margin: 0,
@@ -73,15 +76,7 @@ const globalStyles = globalCss({
 		fontSize: '$32',
 		lineHeight: '$39',
 		letterSpacing: '-0.01em'
-	},
-
-	h3: {},
-
-	h4: {},
-
-	h5: {},
-
-	h6: {}
+	}
 });
 
 export default globalStyles;

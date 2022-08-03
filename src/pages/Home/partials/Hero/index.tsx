@@ -1,7 +1,7 @@
 import { RefObject } from 'react';
 
+import { PokedexBadge } from 'components/badges/Pokedex';
 import Icon from 'components/icons/Icon';
-import { PokedexBadge } from 'components/ui/badges/Pokedex';
 
 import { HeroContainer, Section, StyledExploreBtn } from './styles';
 

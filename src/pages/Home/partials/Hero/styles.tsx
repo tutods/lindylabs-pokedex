@@ -1,4 +1,4 @@
-import { Container } from 'components/ui/Container';
+import { Container } from 'components/Container';
 import { styled } from 'styles/stitches';
 
 const Section = styled('section', {
@@ -47,7 +47,7 @@ const HeroContainer = styled(Container, {
 	}
 });
 
-const StyledExploreBtn = styled('a', {
+const StyledExploreBtn = styled('button', {
 	position: 'absolute',
 	bottom: 0,
 	left: 0,

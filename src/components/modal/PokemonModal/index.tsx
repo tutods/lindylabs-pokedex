@@ -2,8 +2,8 @@ import { useCallback } from 'react';
 import { useRecoilState, useRecoilValue } from 'recoil';
 
 import redPokeball from 'assets/imgs/pokeball-red.png';
+import { PokemonTypeBadge } from 'components/badges/Type';
 import Icon from 'components/icons/Icon';
-import { PokemonTypeBadge } from 'components/ui/badges/Type';
 import { searchPokemonService } from 'shared/services/api/pokemons/searchPokemon.service';
 import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
 import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';

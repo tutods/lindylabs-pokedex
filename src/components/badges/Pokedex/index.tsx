@@ -1,4 +1,4 @@
-import { BadgeBackground, IconContainer } from './styles';
+import { BadgeBackground, IconContainer } from 'components/badges/Pokedex/styles';
 
 const PokedexBadge = () => {
 	return (

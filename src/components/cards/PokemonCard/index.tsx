@@ -1,5 +1,5 @@
+import { CardShape, ImageContainer, InfoContainer } from 'components/cards/PokemonCard/styles';
 import { PokemonTypeIcon } from 'components/icons/PokemonType';
-import { CardShape, ImageContainer, InfoContainer } from 'components/ui/cards/PokemonCard/styles';
 import { Pokemon } from 'shared/@types/Pokemon';
 
 type Props = {
