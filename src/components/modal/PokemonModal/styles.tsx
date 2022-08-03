@@ -246,8 +246,35 @@ const StyledPokeball = styled(Icon, {
 });
 
 const StyledTopModal = styled('div', {
+	position: 'relative',
+
 	width: '100%',
 	height: '$208'
+});
+
+const NavigationIcon = styled(Icon, {
+	position: 'absolute',
+	top: '50%',
+
+	width: '$20',
+
+	color: '$white',
+	cursor: 'pointer',
+
+	variants: {
+		direction: {
+			right: {
+				right: '$20',
+
+				transform: 'translateY(-50%)'
+			},
+			left: {
+				left: '$20',
+
+				transform: 'translateY(-50%)'
+			}
+		}
+	}
 });
 
 const StyledModalDescription = styled('div', DialogPrimitive.Description, {
@@ -334,7 +361,7 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 
 const StyledPokemonImage = styled('div', {
 	position: 'absolute',
-	top: '$120',
+	top: '$70',
 	left: '50%',
 
 	size: '$180',
@@ -363,6 +390,7 @@ const StyledPokemonImage = styled('div', {
 });
 
 export {
+	NavigationIcon,
 	StyledModalContent,
 	StyledModalDescription,
 	StyledModalOverlay,

@@ -1,12 +1,16 @@
-import { useRecoilState } from 'recoil';
+import { useCallback } from 'react';
+import { useRecoilState, useRecoilValue } from 'recoil';
 
 import redPokeball from 'assets/imgs/pokeball-red.png';
 import Icon from 'components/icons/Icon';
 import { PokemonTypeBadge } from 'components/ui/badges/Type';
+import { searchPokemonService } from 'shared/services/api/pokemons/searchPokemon.service';
 import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
+import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import {
+	NavigationIcon,
 	StyledModalContent,
 	StyledModalDescription,
 	StyledModalOverlay,
@@ -18,6 +22,9 @@ import {
 
 const PokemonModal = () => {
 	const [pokemonModal, setPokemonModal] = useRecoilState(pokemonModalAtom);
+
+	const totalOfPokemons = useRecoilValue(totalOfPokemonsAtom);
+	const pokemons = useRecoilValue(pokemonListAtom);
 
 	const { pokemon, isOpen } = pokemonModal;
 
@@ -31,6 +38,24 @@ const PokemonModal = () => {
 		pokemon?.sprites.other.dream_world.front_default ||
 		pokemon?.sprites.other.home.front_default ||
 		pokemon?.sprites.other['official-artwork'].front_default;
+
+	const handleChangePokemon = useCallback(
+		async (action: 'next' | 'previous') => {
+			try {
+				const pokemonId = action === 'next' ? pokemon!.id + 1 : pokemon!.id - 1;
+
+				const data = await searchPokemonService(String(pokemonId), pokemons);
+
+				setPokemonModal((prev) => ({
+					...prev,
+					pokemon: data
+				}));
+			} catch {
+				alert(`It's not possible show the ${action} Pokémon!`);
+			}
+		},
+		[pokemon, pokemons, setPokemonModal]
+	);
 
 	return (
 		<Dialog.Root open={isOpen} onOpenChange={handleOpenModal}>
@@ -51,6 +76,22 @@ const PokemonModal = () => {
 
 					<StyledTopModal>
 						<StyledPokeball css={{ size: '$208' }} name={'pokeball'} />
+
+						{pokemon && pokemon.id > 1 && (
+							<NavigationIcon
+								direction={'left'}
+								name={'caret-left'}
+								onClick={() => handleChangePokemon('previous')}
+							/>
+						)}
+
+						{pokemon && pokemon.id < totalOfPokemons && (
+							<NavigationIcon
+								direction={'right'}
+								name={'caret-right'}
+								onClick={() => handleChangePokemon('next')}
+							/>
+						)}
 
 						<StyledPokemonImage dontHaveImg={!pokemonImage}>
 							<img alt={pokemon?.name} src={pokemonImage ?? redPokeball} />
