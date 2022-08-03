@@ -1,7 +1,9 @@
-import { PokedexBadge } from 'components/ui/badges/Pokedex';
-import { HeroContainer, Section, StyledExploreBtn } from './styles';
-import Icon from 'components/icons/Icon';
 import { RefObject } from 'react';
+
+import Icon from 'components/icons/Icon';
+import { PokedexBadge } from 'components/ui/badges/Pokedex';
+
+import { HeroContainer, Section, StyledExploreBtn } from './styles';
 
 type Props = {
 	scrollTo: RefObject<HTMLDivElement>;
@@ -18,7 +20,7 @@ const HeroSection = ({ scrollTo }: Props) => {
 				<StyledExploreBtn onClick={() => scrollTo?.current?.scrollIntoView()}>
 					<span>explore</span>
 					<span>
-						<Icon css={{ color: '$white' }} name="arrow-down" />
+						<Icon css={{ color: '$white' }} name={'arrow-down'} />
 					</span>
 				</StyledExploreBtn>
 			</HeroContainer>

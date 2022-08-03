@@ -10,4 +10,4 @@ const haveNextAtom = atom({
 	default: true
 });
 
-export { offsetAtom, haveNextAtom };
+export { haveNextAtom, offsetAtom };

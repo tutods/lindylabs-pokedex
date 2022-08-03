@@ -109,4 +109,4 @@ type Pokemon = {
 	weight: number;
 };
 
-export { PokemonType, PokemonStat, Pokemon };
+export { Pokemon, PokemonStat, PokemonType };

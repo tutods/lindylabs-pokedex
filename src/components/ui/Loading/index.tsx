@@ -1,5 +1,6 @@
-import { Dots } from './styles';
 import { CSSProps } from 'shared/@types/Stitches';
+
+import { Dots } from './styles';
 
 type Props = CSSProps & {
 	size?: 8 | 4 | 10 | 15 | 16 | 20 | 50 | 80 | 100;

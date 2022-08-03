@@ -1,9 +1,10 @@
+import { useRecoilValue } from 'recoil';
+
 import Icon from 'components/icons/Icon';
 import { CounterContainer } from 'pages/Home/partials/Counter/styles';
 import { CSSProps } from 'shared/@types/Stitches';
-import { useRecoilValue } from 'recoil';
-import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import { currentFilterAtom } from 'shared/store/atoms/filter.atom';
+import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 
 type Props = CSSProps;
 

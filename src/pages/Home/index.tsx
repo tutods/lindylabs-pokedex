@@ -1,8 +1,22 @@
-import { Container } from 'components/ui/Container';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
+
+import { PokemonModal } from 'components/modal/PokemonModal';
+import { PokemonSearch } from 'components/Search';
+import { PrimaryButton } from 'components/ui/button/PrimaryButton';
+import { Container } from 'components/ui/Container';
+import { Loading } from 'components/ui/Loading';
+import { PokemonCounter } from 'pages/Home/partials/Counter';
+import { PokemonList } from 'pages/Home/partials/PokemonList';
+import { PokemonTypeEnum } from 'shared/enum/PokemonType.enum';
+import { getPokemonsService } from 'shared/services/api/pokemons/getPokemons.service';
+import { getPokemonsByType } from 'shared/services/api/pokemons/getPokemonsByType.service';
 import { currentFilterAtom } from 'shared/store/atoms/filter.atom';
+import { haveNextAtom, offsetAtom } from 'shared/store/atoms/pagination.atom';
+import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import { PokemonTypeFilter } from './partials/Filter';
 import { HeroSection } from './partials/Hero';
+
 import {
 	ContentContainer,
 	CustomContainer,
@@ -10,18 +24,6 @@ import {
 	PokemonsSection,
 	SearchSection
 } from './styles';
-import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
-import { useEffect, useRef, useState } from 'react';
-import { getPokemonsService } from 'shared/services/api/pokemons/getPokemons.service';
-import { haveNextAtom, offsetAtom } from 'shared/store/atoms/pagination.atom';
-import { Loading } from 'components/ui/Loading';
-import { PrimaryButton } from 'components/ui/button/PrimaryButton';
-import { PokemonCounter } from 'pages/Home/partials/Counter';
-import { PokemonModal } from 'components/modal/PokemonModal';
-import { getPokemonsByType } from 'shared/services/api/pokemons/getPokemonsByType.service';
-import { PokemonTypeEnum } from 'shared/enum/PokemonType.enum';
-import { PokemonSearch } from 'pages/Home/partials/Search';
-import { PokemonList } from 'pages/Home/partials/PokemonList';
 
 const LIMIT_SIZE = 9;
 
@@ -33,35 +35,38 @@ const Home = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [currentFilter, setCurrentFilter] = useRecoilState(currentFilterAtom);
 
-	const [pokemons, setPokemons] = useRecoilState(pokemonListAtom);
+	const setPokemons = useSetRecoilState(pokemonListAtom);
 
 	const [offset, setOffset] = useRecoilState(offsetAtom);
 	const [haveNext, setHaveNext] = useRecoilState(haveNextAtom);
 
-	const getData = async (offsetValue: number = 0) => {
-		setIsLoading(true);
+	const getData = useCallback(
+		async (offsetValue = 0) => {
+			setIsLoading(true);
 
-		if (currentFilter === 'all') {
-			const { results, count, next, previous } = await getPokemonsService(offsetValue);
-			setTotalOfPokemons(count);
+			if (currentFilter === 'all') {
+				const { results, count, next } = await getPokemonsService(offsetValue);
+				setTotalOfPokemons(count);
 
-			if (results) {
-				setPokemons((prevState) => {
-					return offset === 0 ? results : [...prevState, ...results];
-				});
+				if (results) {
+					setPokemons((prevState) => {
+						return offset === 0 ? results : [...prevState, ...results];
+					});
+				}
+
+				setHaveNext(!!next);
+			} else {
+				const { results } = await getPokemonsByType(currentFilter);
+
+				if (results) {
+					setPokemons(results);
+				}
 			}
 
-			setHaveNext(!!next);
-		} else {
-			const { results } = await getPokemonsByType(currentFilter);
-
-			if (results) {
-				setPokemons(results);
-			}
-		}
-
-		setIsLoading(false);
-	};
+			setIsLoading(false);
+		},
+		[currentFilter, offset, setHaveNext, setPokemons, setTotalOfPokemons]
+	);
 
 	useEffect(() => {
 		getData(0);
@@ -72,25 +77,33 @@ const Home = () => {
 			setIsLoading(false);
 			setHaveNext(false);
 		};
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		getData(offset);
+
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [offset]);
 
 	useEffect(() => {
 		setOffset(0);
 		getData();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [currentFilter]);
 
-	const handleFilterChange = (filter: 'all' | PokemonTypeEnum) => {
-		if (pokemonsListRef) {
-			pokemonsListRef?.current?.scrollIntoView();
-		}
+	const handleFilterChange = useCallback(
+		(filter: 'all' | PokemonTypeEnum) => {
+			if (pokemonsListRef) {
+				pokemonsListRef?.current?.scrollIntoView();
+			}
 
-		setIsLoading(true);
-		setCurrentFilter(filter);
-	};
+			setIsLoading(true);
+			setCurrentFilter(filter);
+		},
+		[setCurrentFilter]
+	);
 
 	return (
 		<>
@@ -105,16 +118,16 @@ const Home = () => {
 				</Container>
 			</SearchSection>
 
-			<PokemonsSection ref={pokemonsListRef} id="pokemons">
+			<PokemonsSection id={'pokemons'} ref={pokemonsListRef}>
 				<CustomContainer>
 					<PokemonTypeFilter
+						callback={handleFilterChange}
+						currentFilter={currentFilter}
 						css={{
 							position: 'sticky',
 							top: 0,
 							height: 'max-content'
 						}}
-						currentFilter={currentFilter}
-						callback={handleFilterChange}
 					/>
 					<ContentContainer>
 						<PokemonCounter
@@ -127,7 +140,7 @@ const Home = () => {
 
 						{isLoading && (
 							<GenericBottomContainer>
-								<Loading size={16} color={'blue'} />
+								<Loading color={'blue'} size={16} />
 							</GenericBottomContainer>
 						)}
 

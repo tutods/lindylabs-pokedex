@@ -1,5 +1,5 @@
-import { styled } from 'styles/stitches';
 import { Container } from 'components/ui/Container';
+import { styled } from 'styles/stitches';
 
 const SearchSection = styled('section', {
 	py: '$92',
@@ -40,9 +40,9 @@ const GenericBottomContainer = styled('div', {
 });
 
 export {
-	SearchSection,
-	PokemonsSection,
-	CustomContainer,
 	ContentContainer,
-	GenericBottomContainer
+	CustomContainer,
+	GenericBottomContainer,
+	PokemonsSection,
+	SearchSection
 };

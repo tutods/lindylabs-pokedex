@@ -17,4 +17,4 @@ type OriginalPokemonsResponse = {
 	}[];
 };
 
-export { PokemonsResponse, OriginalPokemonsResponse };
+export { OriginalPokemonsResponse, PokemonsResponse };

@@ -1,6 +1,6 @@
+import Icon from 'components/icons/Icon';
 import * as DialogPrimitive from '@radix-ui/react-dialog';
 import { keyframes, styled } from 'styles/stitches';
-import Icon from 'components/icons/Icon';
 
 const overlayShow = keyframes({
 	'0%': { opacity: 0 },
@@ -363,11 +363,11 @@ const StyledPokemonImage = styled('div', {
 });
 
 export {
-	StyledModalOverlay,
 	StyledModalContent,
+	StyledModalDescription,
+	StyledModalOverlay,
 	StyledModalTitle,
 	StyledPokeball,
-	StyledTopModal,
-	StyledModalDescription,
-	StyledPokemonImage
+	StyledPokemonImage,
+	StyledTopModal
 };

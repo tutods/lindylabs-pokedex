@@ -1,9 +1,10 @@
-import Icon from 'components/icons/Icon';
 import { FormEvent, useState } from 'react';
-import { searchPokemonService } from 'shared/services/api/pokemons/searchPokemon.service';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
+
+import Icon from 'components/icons/Icon';
+import { SearchGroup } from 'components/Search/styles';
+import { searchPokemonService } from 'shared/services/api/pokemons/searchPokemon.service';
 import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
-import { SearchGroup } from './styles';
 import { pokemonListAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 
 const PokemonSearch = () => {
@@ -37,14 +38,14 @@ const PokemonSearch = () => {
 	};
 
 	return (
-		<SearchGroup onSubmit={handleSearch} method="post">
+		<SearchGroup method={'post'} onSubmit={handleSearch}>
 			<button type={'submit'}>
-				<Icon size={16} name={'search'} />
+				<Icon name={'search'} size={16} />
 			</button>
 			<input
-				type="text"
-				name="search"
+				name={'search'}
 				placeholder={'Search name or code'}
+				type={'text'}
 				value={search}
 				onChange={(evt) => setSearch(evt.target.value)}
 			/>

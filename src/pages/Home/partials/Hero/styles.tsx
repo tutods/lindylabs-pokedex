@@ -88,4 +88,4 @@ const StyledExploreBtn = styled('a', {
 	}
 });
 
-export { Section, HeroContainer, StyledExploreBtn };
+export { HeroContainer, Section, StyledExploreBtn };

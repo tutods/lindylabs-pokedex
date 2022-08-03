@@ -1,13 +1,13 @@
-import { api } from 'shared/services/api/index';
 import { Pokemon } from 'shared/@types/Pokemon';
 import { OriginalPokemonsResponse, PokemonsResponse } from 'shared/@types/responses/GetPokemons';
+import { api } from 'shared/services/api/index';
 
 const getPokemonsService = async (offset: number): Promise<PokemonsResponse> => {
 	try {
 		const { data } = await api.get<OriginalPokemonsResponse>('pokemon', {
 			params: {
 				limit: 9,
-				offset: offset
+				offset
 			}
 		});
 

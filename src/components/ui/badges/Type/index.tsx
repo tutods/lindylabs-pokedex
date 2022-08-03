@@ -1,4 +1,5 @@
 import { PokemonTypeEnum } from 'shared/enum/PokemonType.enum';
+
 import { StyledBadge } from './styles';
 
 type Props = {

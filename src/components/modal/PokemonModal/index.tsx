@@ -1,4 +1,11 @@
+import { useRecoilState } from 'recoil';
+
+import redPokeball from 'assets/imgs/pokeball-red.png';
+import Icon from 'components/icons/Icon';
+import { PokemonTypeBadge } from 'components/ui/badges/Type';
+import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
 import * as Dialog from '@radix-ui/react-dialog';
+
 import {
 	StyledModalContent,
 	StyledModalDescription,
@@ -8,21 +15,16 @@ import {
 	StyledPokemonImage,
 	StyledTopModal
 } from './styles';
-import Icon from 'components/icons/Icon';
-import { useRecoilState } from 'recoil';
-import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
-import { PokemonTypeBadge } from 'components/ui/badges/Type';
-import redPokeball from 'assets/imgs/pokeball-red.png';
 
 const PokemonModal = () => {
 	const [pokemonModal, setPokemonModal] = useRecoilState(pokemonModalAtom);
 
 	const { pokemon, isOpen } = pokemonModal;
 
-	const handleOpenModal = (isOpen: boolean) =>
+	const handleOpenModal = (status: boolean) =>
 		setPokemonModal((prevState) => ({
 			...prevState,
-			isOpen
+			isOpen: status
 		}));
 
 	const pokemonImage =
@@ -38,8 +40,8 @@ const PokemonModal = () => {
 					<StyledModalTitle>
 						<span>
 							<Dialog.Close asChild>
-								<button>
-									<Icon name="arrow-left" />
+								<button type={'button'}>
+									<Icon name={'arrow-left'} />
 								</button>
 							</Dialog.Close>
 							<h3>{pokemon?.name.replaceAll('-', ' ')}</h3>
@@ -48,10 +50,10 @@ const PokemonModal = () => {
 					</StyledModalTitle>
 
 					<StyledTopModal>
-						<StyledPokeball name={'pokeball'} css={{ size: '$208' }} />
+						<StyledPokeball css={{ size: '$208' }} name={'pokeball'} />
 
 						<StyledPokemonImage dontHaveImg={!pokemonImage}>
-							<img src={pokemonImage ?? redPokeball} alt={pokemon?.name} />
+							<img alt={pokemon?.name} src={pokemonImage ?? redPokeball} />
 						</StyledPokemonImage>
 					</StyledTopModal>
 
@@ -59,8 +61,8 @@ const PokemonModal = () => {
 						<div>
 							{pokemon?.types.map((pokemonType) => (
 								<PokemonTypeBadge
-									type={pokemonType.type.name}
 									key={pokemonType.type.name}
+									type={pokemonType.type.name}
 								/>
 							))}
 						</div>

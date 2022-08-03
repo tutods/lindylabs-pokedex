@@ -1,7 +1,6 @@
-import { Pokemon } from 'shared/@types/Pokemon';
-import { CardShape, ImageContainer, InfoContainer } from 'components/ui/cards/PokemonCard/styles';
 import { PokemonTypeIcon } from 'components/icons/PokemonType';
-import Icon from 'components/icons/Icon';
+import { CardShape, ImageContainer, InfoContainer } from 'components/ui/cards/PokemonCard/styles';
+import { Pokemon } from 'shared/@types/Pokemon';
 
 type Props = {
 	pokemon: Pokemon;
@@ -20,13 +19,7 @@ const PokemonCard = ({ pokemon, onClick }: Props) => {
 		<CardShape type={type} onClick={onClick}>
 			<ImageContainer type={type}>
 				<div />
-				{pokemonImage && (
-					<img
-						src={pokemonImage}
-						alt={pokemon.name}
-						onError={() => <Icon name={'pokeball'} />}
-					/>
-				)}
+				{pokemonImage && <img alt={pokemon.name} src={pokemonImage} />}
 			</ImageContainer>
 
 			<InfoContainer>
