@@ -256,6 +256,10 @@ const InfoContainer = styled('div', {
 			color: '$grayDarkest',
 			fontWeight: '$medium',
 			fontSize: '$13'
+		},
+
+		h3: {
+			textTransform: 'capitalize'
 		}
 	}
 });

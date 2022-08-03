@@ -1,5 +1,5 @@
 import Icon from 'components/icons/Icon';
-import { CounterContainer } from 'pages/App/partials/Counter/styles';
+import { CounterContainer } from 'pages/Home/partials/Counter/styles';
 import { CSSProps } from 'shared/@types/Stitches';
 import { useRecoilValue } from 'recoil';
 import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';

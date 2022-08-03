@@ -1,4 +1,3 @@
-import Icon from 'components/icons/Icon';
 import { Container } from 'components/ui/Container';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { currentFilterAtom } from 'shared/store/atoms/filter.atom';
@@ -8,37 +7,31 @@ import {
 	ContentContainer,
 	CustomContainer,
 	GenericBottomContainer,
-	PokemonListContainer,
 	PokemonsSection,
-	SearchGroup,
 	SearchSection
 } from './styles';
 import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
-import { FormEvent, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getPokemonsService } from 'shared/services/api/pokemons/getPokemons.service';
-import { PokemonCard } from 'components/ui/cards/PokemonCard';
 import { haveNextAtom, offsetAtom } from 'shared/store/atoms/pagination.atom';
 import { Loading } from 'components/ui/Loading';
 import { PrimaryButton } from 'components/ui/button/PrimaryButton';
-import { PokemonCounter } from 'pages/App/partials/Counter';
+import { PokemonCounter } from 'pages/Home/partials/Counter';
 import { PokemonModal } from 'components/modal/PokemonModal';
-import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
-import { searchPokemonService } from 'shared/services/api/pokemons/searchPokemon.service';
 import { getPokemonsByType } from 'shared/services/api/pokemons/getPokemonsByType.service';
 import { PokemonTypeEnum } from 'shared/enum/PokemonType.enum';
+import { PokemonSearch } from 'pages/Home/partials/Search';
+import { PokemonList } from 'pages/Home/partials/PokemonList';
 
 const LIMIT_SIZE = 9;
 
-const App = () => {
+const Home = () => {
 	const pokemonsListRef = useRef<HTMLDivElement>(null);
 
 	const setTotalOfPokemons = useSetRecoilState(totalOfPokemonsAtom);
 
-	const setPokemonModal = useSetRecoilState(pokemonModalAtom);
 	const [isLoading, setIsLoading] = useState(false);
 	const [currentFilter, setCurrentFilter] = useRecoilState(currentFilterAtom);
-
-	const [search, setSearch] = useState('');
 
 	const [pokemons, setPokemons] = useRecoilState(pokemonListAtom);
 
@@ -99,30 +92,6 @@ const App = () => {
 		setCurrentFilter(filter);
 	};
 
-	/**
-	 * Is possible change my approach to return a list of results,
-	 * but I consider this mehtod only return one result
-	 */
-	const handleSearch = async (evt: FormEvent) => {
-		evt.preventDefault();
-
-		if (search.length === 0) {
-			return;
-		}
-		try {
-			const data = await searchPokemonService(search, pokemons);
-
-			setPokemonModal({
-				isOpen: true,
-				pokemon: data
-			});
-		} catch (error) {
-			alert("Sorry, but we can't found any pokémon with this id/name!");
-		}
-
-		setSearch('');
-	};
-
 	return (
 		<>
 			<HeroSection scrollTo={pokemonsListRef} />
@@ -132,18 +101,7 @@ const App = () => {
 				<Container>
 					<h2>Select your Pokémon</h2>
 
-					<SearchGroup onSubmit={handleSearch} method="post">
-						<button type={'submit'}>
-							<Icon size={16} name={'search'} />
-						</button>
-						<input
-							type="text"
-							name="search"
-							placeholder={'Search name or code'}
-							value={search}
-							onChange={(evt) => setSearch(evt.target.value)}
-						/>
-					</SearchGroup>
+					<PokemonSearch />
 				</Container>
 			</SearchSection>
 
@@ -165,20 +123,7 @@ const App = () => {
 							}}
 						/>
 
-						<PokemonListContainer>
-							{pokemons.map((pokemon) => (
-								<PokemonCard
-									key={`${pokemon.id}-${pokemon.name.replace(' ', '-')}`}
-									pokemon={pokemon}
-									onClick={() =>
-										setPokemonModal((prev) => ({
-											isOpen: true,
-											pokemon: pokemon
-										}))
-									}
-								/>
-							))}
-						</PokemonListContainer>
+						<PokemonList />
 
 						{isLoading && (
 							<GenericBottomContainer>
@@ -186,7 +131,7 @@ const App = () => {
 							</GenericBottomContainer>
 						)}
 
-						{(haveNext || isLoading) && (
+						{currentFilter === 'all' && (haveNext || !isLoading) && (
 							<GenericBottomContainer>
 								<PrimaryButton
 									onClick={() => setOffset((prev) => prev + LIMIT_SIZE)}
@@ -202,4 +147,4 @@ const App = () => {
 	);
 };
 
-export { App };
+export { Home };

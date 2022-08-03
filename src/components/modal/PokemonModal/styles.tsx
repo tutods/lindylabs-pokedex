@@ -36,8 +36,8 @@ const StyledModalContent = styled(DialogPrimitive.Content, {
 	displayFlex: 'column',
 	alignItems: 'center',
 
-	px: '$4',
-	py: '$4',
+	px: '$8',
+	py: '$8',
 
 	borderRadius: '$12',
 
@@ -184,27 +184,18 @@ const StyledModalContent = styled(DialogPrimitive.Content, {
 	},
 
 	'&:focus': { outline: 'none' }
-
-	// backgroundColor: 'white',
-	// borderRadius: 6,
-	// boxShadow:
-	// 	'hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px',
-
-	// width: '90vw',
-	// maxWidth: '450px',
-	// maxHeight: '85vh',
-	// padding: 25,
 });
 
-const StyledModalTitle = styled(DialogPrimitive.Title, {
-	position: 'absolute',
-	top: '$24',
-	left: '$24',
-	right: '$24',
+const StyledModalTitle = styled('div', DialogPrimitive.Title, {
+	width: '100%',
 
 	displayFlex: 'row',
 	alignItems: 'center',
 	justifyContent: 'space-between',
+
+	px: '$16',
+	pt: '$16',
+	pb: '$8',
 
 	color: '$white',
 
@@ -269,11 +260,19 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 
 	pt: '$70',
 	pb: '$40',
-	px: '$20',
+	px: '$16',
 	borderRadius: '$8',
 
 	backgroundColor: '$shape',
 	color: '$text',
+
+	variants: {
+		dontHaveImg: {
+			true: {
+				pt: '$40'
+			}
+		}
+	},
 
 	'&>div': {
 		'&:nth-of-type(1)': {
@@ -335,7 +334,7 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 
 const StyledPokemonImage = styled('div', {
 	position: 'absolute',
-	top: '$70',
+	top: '$120',
 	left: '50%',
 
 	size: '$180',
@@ -349,6 +348,17 @@ const StyledPokemonImage = styled('div', {
 	img: {
 		width: '100%',
 		height: '100%'
+	},
+
+	variants: {
+		dontHaveImg: {
+			true: {
+				img: {
+					height: 'auto',
+					objectFit: 'cover'
+				}
+			}
+		}
 	}
 });
 

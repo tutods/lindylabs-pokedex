@@ -12,6 +12,7 @@ import Icon from 'components/icons/Icon';
 import { useRecoilState } from 'recoil';
 import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
 import { PokemonTypeBadge } from 'components/ui/badges/Type';
+import redPokeball from 'assets/imgs/pokeball-red.png';
 
 const PokemonModal = () => {
 	const [pokemonModal, setPokemonModal] = useRecoilState(pokemonModalAtom);
@@ -41,19 +42,20 @@ const PokemonModal = () => {
 									<Icon name="arrow-left" />
 								</button>
 							</Dialog.Close>
-							<h3>{pokemon?.name}</h3>
+							<h3>{pokemon?.name.replaceAll('-', ' ')}</h3>
 						</span>
 						<span>#{String(pokemon?.id).padStart(3, '0')}</span>
 					</StyledModalTitle>
 
 					<StyledTopModal>
 						<StyledPokeball name={'pokeball'} css={{ size: '$208' }} />
-						<StyledPokemonImage>
-							<img src={pokemonImage} alt={pokemon?.name} />
+
+						<StyledPokemonImage dontHaveImg={!pokemonImage}>
+							<img src={pokemonImage ?? redPokeball} alt={pokemon?.name} />
 						</StyledPokemonImage>
 					</StyledTopModal>
 
-					<StyledModalDescription>
+					<StyledModalDescription dontHaveImg={!pokemonImage}>
 						<div>
 							{pokemon?.types.map((pokemonType) => (
 								<PokemonTypeBadge

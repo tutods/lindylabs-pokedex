@@ -45,6 +45,7 @@ const space = {
 	106: calculateRem(106),
 	110: calculateRem(110),
 	112: calculateRem(112),
+	120: calculateRem(120),
 	152: calculateRem(152),
 	162: calculateRem(162),
 	202: calculateRem(202),
