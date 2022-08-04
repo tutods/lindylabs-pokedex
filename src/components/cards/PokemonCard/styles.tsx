@@ -145,7 +145,15 @@ const ImageContainer = styled('div', {
 		height: '100%',
 
 		objectFit: 'fill',
-		zIndex: 1
+		zIndex: 1,
+
+		// Prevent image selection
+		'-drag': 'none',
+		userSelect: 'none',
+		'-moz-user-select': 'none',
+		'-webkit-user-drag': 'none',
+		'-webkit-user-select': 'none',
+		'-ms-user-select': 'none'
 	},
 
 	variants: {
