@@ -6,7 +6,7 @@ import { PokemonTypeBadge } from 'components/badges/Type';
 import Icon from 'components/icons/Icon';
 import { searchPokemonService } from 'shared/services/api/pokemons/searchPokemon.service';
 import { pokemonModalAtom } from 'shared/store/atoms/pokemons/pokemon-modal.atom';
-import { pokemonListAtom, totalOfPokemonsAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
+import { pokemonListAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import * as Dialog from '@radix-ui/react-dialog';
 
 import {
@@ -23,7 +23,6 @@ import {
 const PokemonModal = () => {
 	const [pokemonModal, setPokemonModal] = useRecoilState(pokemonModalAtom);
 
-	const totalOfPokemons = useRecoilValue(totalOfPokemonsAtom);
 	const pokemons = useRecoilValue(pokemonListAtom);
 
 	const { pokemon, isOpen } = pokemonModal;
@@ -85,13 +84,11 @@ const PokemonModal = () => {
 							/>
 						)}
 
-						{pokemon && pokemon.id < totalOfPokemons && (
-							<NavigationIcon
-								direction={'right'}
-								name={'caret-right'}
-								onClick={() => handleChangePokemon('next')}
-							/>
-						)}
+						<NavigationIcon
+							direction={'right'}
+							name={'caret-right'}
+							onClick={() => handleChangePokemon('next')}
+						/>
 
 						<StyledPokemonImage dontHaveImg={!pokemonImage}>
 							<img alt={pokemon?.name} src={pokemonImage ?? redPokeball} />
