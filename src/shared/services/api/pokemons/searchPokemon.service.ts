@@ -1,9 +1,13 @@
 import { Pokemon } from 'shared/@types/Pokemon';
 import { api } from 'shared/services/api/index';
 
-const searchPokemonService = async (searchValue: string, pokemons: Pokemon[]): Promise<Pokemon> => {
+const searchPokemonService = async (
+	searchValue: string | number,
+	pokemons: Pokemon[]
+): Promise<Pokemon> => {
 	const pokemonExists = pokemons.find(
-		(pokemon) => pokemon.id === Number(searchValue) || pokemon.name.includes(searchValue)
+		(pokemon) =>
+			pokemon.id === Number(searchValue) || pokemon.name.includes(String(searchValue))
 	);
 
 	/**

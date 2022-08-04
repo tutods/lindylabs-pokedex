@@ -374,7 +374,19 @@ const StyledPokemonImage = styled('div', {
 
 	img: {
 		width: '100%',
-		height: '100%'
+		height: '100%',
+
+		/**
+		 * Prevent image selection
+		 * if you click super fast on next/previous button, some times image is selected,
+		 * this code prevent that
+		 */
+		'-drag': 'none',
+		userSelect: 'none',
+		'-moz-user-select': 'none',
+		'-webkit-user-drag': 'none',
+		'-webkit-user-select': 'none',
+		'-ms-user-select': 'none'
 	},
 
 	variants: {

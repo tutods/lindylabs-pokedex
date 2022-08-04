@@ -43,7 +43,7 @@ const PokemonModal = () => {
 			try {
 				const pokemonId = action === 'next' ? pokemon!.id + 1 : pokemon!.id - 1;
 
-				const data = await searchPokemonService(String(pokemonId), pokemons);
+				const data = await searchPokemonService(pokemonId, pokemons);
 
 				setPokemonModal((prev) => ({
 					...prev,
