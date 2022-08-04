@@ -19,8 +19,7 @@ This project is a **Coding Challenge** for a **[Lindy Labs](https://www.linkedin
 -   [x] When submitting, query [https://pokeapi.co](https://pokeapi.co) and display the given
         Pokémon (at least name, number and sprite), or an error message if no
         match is found;
-    -   When you make a search, first thing I do is validate if my state contains any Pokémon to match with id or name. If not, make a request to **
-        [PokeApi](https://pokeapi.co)**;
+    -   When you make a search, first thing I do is validate if my state contains any Pokémon to match with id or name. If not, make a request to **[PokeApi](https://pokeapi.co)**;
     -   When return one result, the modal with details will open automatically.
 -   [x] Provide “Previous” & “Next” buttons, that switch to the previous/next
         Pokémons, base on their id number;
