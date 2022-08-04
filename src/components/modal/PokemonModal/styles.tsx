@@ -304,9 +304,10 @@ const StyledModalDescription = styled('div', DialogPrimitive.Description, {
 	'&>div': {
 		'&:nth-of-type(1)': {
 			displayFlex: 'row',
-			gap: '$16',
 			alignItems: 'center',
-			justifyContent: 'center'
+			justifyContent: 'center',
+			flexWrap: 'wrap',
+			gap: '$16'
 		},
 
 		'&:nth-of-type(2)': {
