@@ -1,9 +1,5 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-#!/bin/sh
-. "$(dirname "$0")/_/husky.sh"
-
-echo "\n━━━ Pre-commit ━━━\n"
-
+echo "━━━ Pre-commit ━━━"
 yarn pre-commit
