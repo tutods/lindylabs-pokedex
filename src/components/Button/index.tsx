@@ -1,33 +1,33 @@
 import { styled } from 'styles/stitches';
 
 const Button = styled('button', {
-	px: '$20',
-	py: '$14',
-	borderRadius: '$6',
+  px: '$20',
+  py: '$14',
+  borderRadius: '$6',
 
-	fontWeight: '$semiBold',
-	fontSize: '$14',
-	lineHeight: '$17',
+  fontWeight: '$semiBold',
+  fontSize: '$14',
+  lineHeight: '$17',
 
-	transition: 'all .3s ease-in',
+  transition: 'all .3s ease-in',
 
-	variants: {
-		variant: {
-			primary: {
-				backgroundColor: 'rgba(63, 93, 179, 0.1)',
-				color: '$blue',
+  variants: {
+    variant: {
+      primary: {
+        backgroundColor: 'rgba(63, 93, 179, 0.1)',
+        color: '$blue',
 
-				'&:disabled': {
-					opacity: '0.5'
-				},
+        '&:disabled': {
+          opacity: '0.5',
+        },
 
-				'&:hover': {
-					backgroundColor: '$blue',
-					color: '$white'
-				}
-			}
-		}
-	}
+        '&:hover': {
+          backgroundColor: '$blue',
+          color: '$white',
+        },
+      },
+    },
+  },
 });
 
 export { Button };

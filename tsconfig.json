@@ -22,10 +22,9 @@
     "baseUrl": "src"
   },
   "include": [
-    "src",
-    ".eslintrc.cjs"
+    "src"
   ],
-  "re˝ferences": [
+  "references": [
     {
       "path": "./tsconfig.node.json"
     }

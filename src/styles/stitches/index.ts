@@ -10,15 +10,15 @@ import { space } from './partials/space';
 import { utils } from './partials/utils';
 
 export const { styled, css, globalCss, keyframes, getCssText, theme, createTheme, config } =
-	createStitches({
-		theme: {
-			colors,
-			sizes,
-			space,
-			...font,
-			lineHeights,
-			radii
-		},
-		media,
-		utils
-	});
+  createStitches({
+    theme: {
+      colors,
+      sizes,
+      space,
+      ...font,
+      lineHeights,
+      radii,
+    },
+    media,
+    utils,
+  });

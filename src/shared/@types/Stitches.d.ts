@@ -1,6 +1,6 @@
-import * as Stitches from '@stitches/react';
+import type * as Stitches from '@stitches/react';
 
-import { config } from 'styles/stitches';
+import type { config } from 'styles/stitches';
 
 export type CSS = Stitches.CSS<typeof config>;
 

@@ -1,15 +1,15 @@
 import { atom } from 'recoil';
 
-import { Pokemon } from 'shared/@types/Pokemon';
+import type { Pokemon } from 'shared/@types/Pokemon';
 
 const pokemonListAtom = atom<Pokemon[]>({
-	key: 'pokemonList',
-	default: []
+  key: 'pokemonList',
+  default: [],
 });
 
 const totalOfPokemonsAtom = atom<number>({
-	key: 'totalOfPokemons',
-	default: 0
+  key: 'totalOfPokemons',
+  default: 0,
 });
 
 export { pokemonListAtom, totalOfPokemonsAtom };

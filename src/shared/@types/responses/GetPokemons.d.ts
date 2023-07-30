@@ -1,20 +1,20 @@
-import { Pokemon } from 'shared/@types/Pokemon';
+import type { Pokemon } from 'shared/@types/Pokemon';
 
 type PokemonsResponse = {
-	count: number;
-	next: string;
-	previous: string | null;
-	results: Pokemon[];
+  count: number;
+  next: string;
+  previous: string | null;
+  results: Pokemon[];
 };
 
 type OriginalPokemonsResponse = {
-	count: number;
-	next: string;
-	previous: string | null;
-	results: {
-		name: string;
-		url: string;
-	}[];
+  count: number;
+  next: string;
+  previous: string | null;
+  results: {
+    name: string;
+    url: string;
+  }[];
 };
 
-export { OriginalPokemonsResponse, PokemonsResponse };
+export type { OriginalPokemonsResponse, PokemonsResponse };

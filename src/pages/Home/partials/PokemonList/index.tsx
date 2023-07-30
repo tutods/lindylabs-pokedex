@@ -7,25 +7,25 @@ import { pokemonListAtom } from 'shared/store/atoms/pokemons/pokemons.atom';
 import { PokemonListContainer } from './styles';
 
 const PokemonList = () => {
-	const pokemons = useRecoilValue(pokemonListAtom);
-	const setPokemonModal = useSetRecoilState(pokemonModalAtom);
+  const pokemons = useRecoilValue(pokemonListAtom);
+  const setPokemonModal = useSetRecoilState(pokemonModalAtom);
 
-	return (
-		<PokemonListContainer>
-			{pokemons.map((pokemon) => (
-				<PokemonCard
-					key={`${pokemon.id}-${pokemon.name.replaceAll(' ', '-')}`}
-					pokemon={pokemon}
-					onClick={() =>
-						setPokemonModal({
-							isOpen: true,
-							pokemon
-						})
-					}
-				/>
-			))}
-		</PokemonListContainer>
-	);
+  return (
+    <PokemonListContainer>
+      {pokemons.map(pokemon => (
+        <PokemonCard
+          key={`${pokemon.id}-${pokemon.name.replaceAll(' ', '-')}`}
+          pokemon={pokemon}
+          onClick={() =>
+            setPokemonModal({
+              isOpen: true,
+              pokemon,
+            })
+          }
+        />
+      ))}
+    </PokemonListContainer>
+  );
 };
 
 export { PokemonList };
