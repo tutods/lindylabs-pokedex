@@ -17,22 +17,23 @@ This project is a **Coding Challenge** for a **[Lindy Labs](https://www.linkedin
     -   If you don't have any filter, you will see 9 Pokémons when start, and if you want you can load 9 more each time you press **Load more
         Pokémons** button.
 -   [x] When submitting, query [https://pokeapi.co](https://pokeapi.co) and display the given
-        Pokémon (at least name, number and sprite), or an error message if no
+        Pokémon (at least name, number, and sprite), or an error message if no
         match is found;
-    -   When you make a search, first thing I do is validate if my state contains any Pokémon to match with id or name. If not, make a request to **[PokeApi](https://pokeapi.co)**;
-    -   When return one result, the modal with details will open automatically.
+    -   When you make a search, the first thing I do is validate if my state contains any Pokémon to match with id or name. If not, make a request to **[PokeApi](https://pokeapi.co)**;
+    -   When returning one result, the modal with details will open automatically.
 -   [x] Provide “Previous” & “Next” buttons, that switch to the previous/next
-        Pokémons, base on their id number;
+        Pokémons, based on their id number;
 -   [x] Provide a text-based search feature, where inputting a name or partial
-        name should look for a matching Pokémon and show it;
+        the name should look for a matching Pokémon and show it;
 -   [ ] Have at least two automated tests, for the two features above;
-    -   **IMPROVEMENT:** this point is an improvement to learn new skills and finish all requirements on this challenge.
+    -   **IMPROVEMENT:** This point is an improvement to learn new skills and finish all requirements on this challenge.
 
 ### Additional Points
 
-This 3 points are essential on each project I do!
+These 3 points are essential for each project I do!
 
 -   [x] **ESLint** configuration;
+    - Use my package `@tutods/eslint-config`.   
 -   [x] Add **Husky** and **Lint Staged** to run on each commit;
 -   [x] Add **Commit Lint** to follow the guidelines on commit messages;
 
@@ -44,7 +45,7 @@ To run this project, you will need to add the following environment variables to
 
 ## 🌐 Live Version
 
-[![vercel](https://img.shields.io/badge/vercel-000?style=for-the-badge&logo=vercel&logoColor=white)](https://lindylabs-pokedex.vercel.app/)
+[![netlify](https://img.shields.io/badge/netlify-000?style=for-the-badge&logo=netlify&logoColor=white)](https://lindylabs-pokedex.netlify.app/)
 
 ## 🔗 More About Me
 
