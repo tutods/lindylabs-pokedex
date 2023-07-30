@@ -33,7 +33,7 @@ This project is a **Coding Challenge** for a **[Lindy Labs](https://www.linkedin
 These 3 points are essential for each project I do!
 
 -   [x] **ESLint** configuration;
-    - Use my package `@tutods/eslint-config`.   
+    - Use my package [![npm package](https://img.myrandomwebs.com/npm/v/@tutods/eslint-config.svg?label=@tutods/eslint-config&icon=npm)](https://www.npmjs.com/package/@tutods/eslint-config).   
 -   [x] Add **Husky** and **Lint Staged** to run on each commit;
 -   [x] Add **Commit Lint** to follow the guidelines on commit messages;
 
